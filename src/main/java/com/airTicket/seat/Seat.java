@@ -2,6 +2,7 @@ package com.airTicket.seat;
 
 import com.airTicket.airplane.Airplane;
 import com.airTicket.core.BaseEntity;
+import com.airTicket.ticket.Ticket;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,6 +19,10 @@ public class Seat extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "airplane_id")
     private Airplane airplane;
+
+    @OneToOne
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 
     public Seat() {
         super();
@@ -59,5 +64,13 @@ public class Seat extends BaseEntity {
 
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 }

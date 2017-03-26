@@ -1,9 +1,9 @@
-package com.airTicket.town;
+package com.airTicket.user;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TownRepository extends CrudRepository<Town, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
 }
