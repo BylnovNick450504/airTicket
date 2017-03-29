@@ -29,6 +29,7 @@ public class Seat extends BaseEntity {
     }
 
     public Seat(SeatClass seatClass, int number, SeatStatus seatStatus) {
+        super();
         this.seatClass = seatClass;
         this.number = number;
         this.seatStatus = seatStatus;

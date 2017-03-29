@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TownRepository extends CrudRepository<Town, Long> {
-
+    Town findById(Long id);
 }

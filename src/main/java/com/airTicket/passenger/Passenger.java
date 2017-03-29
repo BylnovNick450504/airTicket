@@ -19,6 +19,7 @@ public class Passenger extends BaseEntity {
     }
 
     public Passenger(String firstName, String secondName, String fatherName, String passportNum, int age) {
+        super();
         this.firstName = firstName;
         this.secondName = secondName;
         this.fatherName = fatherName;

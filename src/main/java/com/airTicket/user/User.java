@@ -25,6 +25,7 @@ public class User extends BaseEntity {
     }
 
     public User(String userName, String password, String email) {
+        super();
         this.userName = userName;
         this.password = password;
         this.email = email;

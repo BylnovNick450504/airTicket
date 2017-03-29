@@ -14,10 +14,10 @@ public class Route extends BaseEntity {
     private String name;
     private int status;
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Town source;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Town destination;
 
     public Route() {
@@ -61,5 +61,4 @@ public class Route extends BaseEntity {
     public void setDestination(Town destination) {
         this.destination = destination;
     }
-
 }

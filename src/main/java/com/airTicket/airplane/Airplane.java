@@ -24,7 +24,7 @@ public class Airplane extends BaseEntity {
     }
 
     public Airplane(String name, String type, int status, int speed) {
-        this();
+        super();
         this.name = name;
         this.type = type;
         this.status = status;

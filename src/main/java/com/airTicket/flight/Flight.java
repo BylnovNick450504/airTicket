@@ -27,6 +27,7 @@ public class Flight extends BaseEntity {
     }
 
     public Flight(String name, Date departureTime) {
+        super();
         this.name = name;
         this.departureTime = departureTime;
     }
