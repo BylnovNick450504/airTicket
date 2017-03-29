@@ -19,4 +19,13 @@ public class RouteController {
         return routeService.addTown(id, customRouteRequest);
     }
 
+    @RequestMapping(value = "/routes/{id}/update/town", method = RequestMethod.PUT)
+    public ResponseStatus updateTown(@PathVariable Long id, @RequestBody CustomRouteRequest customRouteRequest)  {
+        return routeService.addTown(id, customRouteRequest);
+    }
+
+
+
+
+
 }

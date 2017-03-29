@@ -2,6 +2,8 @@ package com.airTicket.seat;
 
 import com.airTicket.airplane.Airplane;
 import com.airTicket.core.BaseEntity;
+import com.airTicket.seat.classification.SeatClass;
+import com.airTicket.seat.status.SeatStatus;
 import com.airTicket.ticket.Ticket;
 
 import javax.persistence.Entity;
@@ -12,9 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "seats")
 public class Seat extends BaseEntity {
-    private SeatClass seatClass;
     private int number;
+
+    @OneToOne
     private SeatStatus seatStatus;
+
+    @OneToOne
+    private SeatClass seatClass;
 
     @OneToOne
     @JoinColumn(name = "airplane_id")
