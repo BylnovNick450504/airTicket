@@ -9,14 +9,27 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.ParameterizedType;
+
 @Component
 public class CustomCrudRepositoryImpl<T extends BaseEntity> implements CustomCrudRepository<T, Long> {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+    private Class<T> typeOfT;
+
     private static SessionFactory buildSessionFactory() {
         final ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
         return new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+    }
+
+    @SuppressWarnings("unchecked")
+    private void setTypeOfT() {
+        this.typeOfT = (Class<T>)
+                ((ParameterizedType)getClass()
+                        .getGenericSuperclass())
+                        .getActualTypeArguments()[0];
+
     }
 
     @Override
