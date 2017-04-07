@@ -9,7 +9,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 @Component
 public class CustomCrudRepositoryImpl<T extends BaseEntity> implements CustomCrudRepository<T, Long> {
@@ -41,5 +44,25 @@ public class CustomCrudRepositoryImpl<T extends BaseEntity> implements CustomCru
         session.close();
         System.out.println("hello in save!");
         return s;
+    }
+
+    @Override
+    public T findOne(Long id) {
+        setTypeOfT();
+        Session session = sessionFactory.openSession();
+        T result = session.get(typeOfT, id);
+        System.out.println(typeOfT);
+        session.close();
+        return result;
+    }
+
+    @Override
+    public List<T> findAll() {
+        setTypeOfT();
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(typeOfT);
+        criteria.from(typeOfT);
+        return session.createQuery(criteria).getResultList();
     }
 }
