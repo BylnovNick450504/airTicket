@@ -1,5 +1,7 @@
 package com.airTicket.core;
 
+import com.airTicket.flight.Flight;
+import com.airTicket.flight.FlightRepository;
 import com.airTicket.seat.status.SeatStatus;
 import com.airTicket.seat.classification.SeatClass;
 import com.airTicket.seat.classification.SeatClassRepository;
@@ -9,16 +11,20 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class DatabaseLoader implements ApplicationRunner {
 
     private final SeatStatusRepository seatStatusRepository;
     private final SeatClassRepository seatClassRepository;
+    private final FlightRepository flightRepository;
 
     @Autowired
-    public DatabaseLoader(SeatStatusRepository seatStatusRepository, SeatClassRepository seatClassRepository) {
+    public DatabaseLoader(SeatStatusRepository seatStatusRepository, SeatClassRepository seatClassRepository, FlightRepository flightRepository) {
         this.seatStatusRepository = seatStatusRepository;
         this.seatClassRepository = seatClassRepository;
+        this.flightRepository = flightRepository;
     }
 
     @Override
@@ -38,6 +44,13 @@ public class DatabaseLoader implements ApplicationRunner {
         seatStatusRepository.save(st2);
         seatStatusRepository.save(st3);
 
+        Date date = new Date(2017, 6, 100, 13, 59, 00);
+        Flight flight1 = new Flight("YS-102", date);
+        Flight flight2 = new Flight("YS-103", date);
+        Flight flight3 = new Flight("YS-104", date);
 
+        flightRepository.save(flight1);
+        flightRepository.save(flight2);
+        flightRepository.save(flight3);
     }
 }
