@@ -1,4 +1,4 @@
-package com.airTicket.core;
+package com.airTicket.config;
 
 import com.airTicket.airplane.Airplane;
 import com.airTicket.flight.Flight;
